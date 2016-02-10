@@ -1,12 +1,19 @@
-;;;; Comfy Emacs 24.5 ;;;;
+;;;; Happy Emacs 24.5 for Windows 10 ;;;;
+;; pkg = from MELPA
+;; Things that suddenly ceased working in 24.5. To be more precise, *all* dead keys which worked before as usual ceased to work in 24.5.
+;; I'm not sure what exactly happened or was it even some version fuckup, but all dead keys suddenly produced messages such as "<dead-acute> is undefined".  2015-11-27
+;; Running Emacs in Windows 10 and the problem is gone but different kind of problem persists. Now doubletapping diacrit characters produces two of them ¨¨ ~~ ´´ ``, while standard behaviour in Linux was to produce one after doubletap ¨ ~ ´ `
+;; Now investigating entirely platform independent way to bind those dead keys so that it produces wanted result on first press. 2015-12-03
+;; in Windows 10 follow this guide when necessary to get experience close to Fedora http://bit.ly/1TLwVm1
 
 ;; Reduce startup time
 (setq gc-cons-threshold 100000000)
 
 ;; Save sessions
-(desktop-save-mode 1)
+(desktop-save-mode 1)		  
 
-;; MELPA Package Repository
+;; MELPA Package Repository melpa.org
+;; 
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
@@ -25,7 +32,6 @@
 (setq show-paren-delay 0)
 (setq show-paren-style 'parenthesis)
 (show-paren-mode 1)
-;;(set-fill-column 80)
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
@@ -40,6 +46,13 @@
 (global-set-key (kbd "C-c g") 'goto-line)
 (global-set-key (kbd "C-<tab>") 'indent-region)
 
+(defun scandi-be-gone ()
+  (local-set-key (kbd "¨") (kbd "~"))
+  (local-set-key (kbd "§") (kbd "`"))
+  (local-set-key (kbd "å") (kbd "`"))
+  (local-set-key (kbd "ö") (kbd "("))
+  (local-set-key (kbd "ä") (kbd ")")))
+
 ;; Text Mode
 (defun comfy-text ()
   (local-set-key (kbd "C-c <deletechar>") 'kill-paragraph))
@@ -47,43 +60,28 @@
 (add-hook 'text-mode-hook 'visual-line-mode)
 
 ;; Haskell
-(defun comfy-haskell ()
-  (local-set-key (kbd "Ã¥") (kbd "`"))
-  (local-set-key (kbd "Â¨") (kbd "~"))
-  (local-set-key (kbd "Ã¶") (kbd "("))
-  (local-set-key (kbd "Ã¤") (kbd ")")))
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-(add-hook 'haskell-mode-hook 'comfy-haskell)
+(add-hook 'haskell-mode-hook 'scandi-be-gone)
 
 ;; Common Lisp, Emacs Lisp, Scheme
-(defun comfy-lisp ()
+(defun comfy-lisp () 
   (local-set-key [f8] 'slime-close-all-parens-in-sexp)
   (local-set-key [f5] 'slime-eval-buffer)
-  (local-set-key (kbd "Ã¥") (kbd "`"))
-  (local-set-key (kbd "Â¨") (kbd "~"))
-  (local-set-key (kbd "Ã¶") (kbd "("))
-  (local-set-key (kbd "Ã¤") (kbd ")")))
+  (scandi-be-gone))
 (add-hook 'lisp-mode-hook 'comfy-lisp)
 (add-hook 'emacs-lisp-mode-hook 'comfy-lisp)
 (add-hook 'common-lisp-mode-hook 'comfy-lisp)
-(add-hook 'scheme-mode-hook 'comfy-lisp)
 (add-hook 'slime-mode-hook 'comfy-lisp)
 (add-hook 'slime-repl-mode-hook 'comfy-lisp)
-
-;; Common Lisp implementation for SLIME - enable only one!
+(add-hook 'scheme-mode-hook 'comfy-lisp)
 (setq inferior-lisp-program "C:/SBCL/sbcl.exe")
 ;;(setq inferior-lisp-program "C:/ECL/ecl.exe")
-;;(setq inferior-lisp-program "/usr/bin/sbcl")
-;;(setq inferior-lisp-program "usr/bin/ecl")
 (setq slime-contribs '(slime-fancy))
 
 ;; C, C++, Java
 (defun comfy-cee ()
   (capitalized-words-mode 1)
-  (local-set-key (kbd "Â¨") (kbd "~"))
-  (local-set-key (kbd "Ã¥") (kbd "`"))
-  (local-set-key (kbd "Ã¶") (kbd "("))
-  (local-set-key (kbd "Ã¤") (kbd ")")))
+  (scandi-be-gone))
 (add-hook 'c-mode-hook 'comfy-cee)
 (add-hook 'c++-mode-hook 'comfy-cee)
 (add-hook 'java-mode-hook 'comfy-cee)
@@ -91,6 +89,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; GENERATED SETTINGS BEGIN HERE
+;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -111,7 +110,7 @@
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(package-selected-packages
    (quote
-    (jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
+    (geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
  '(ring-bell-function (quote ignore)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
