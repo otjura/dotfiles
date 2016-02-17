@@ -90,7 +90,7 @@
 (defun comfy-clojure ()
   (scandi-be-gone))
 (add-hook 'clojure-mode-hook 'comfy-clojure)
-(add-hook 'cide-mode-hook 'comfy-clojure)
+(add-hook 'cider-mode-hook 'comfy-clojure)
 (add-hook 'cider-repl-mode-hook 'comfy-clojure)
 
 ;; C, C++, Java
@@ -99,7 +99,7 @@
   (capitalized-words-mode 1))
 (add-hook 'c-mode-hook 'comfy-cee)
 (add-hook 'c++-mode-hook 'comfy-cee)
-(add-hook 'java-mode-hook 'comfy-cee)
+(add-hook 'java-mode-hook 'comfy-cee) 
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
