@@ -1,10 +1,9 @@
 ;;;; Happy Emacs 24.5 for Windows 10 ;;;;
-;; pkg = from MELPA
 ;; Things that suddenly ceased working in 24.5. To be more precise, *all* dead keys which worked before as usual ceased to work in 24.5.
 ;; I'm not sure what exactly happened or was it even some version fuckup, but all dead keys suddenly produced messages such as "<dead-acute> is undefined".  2015-11-27
 ;; Running Emacs in Windows 10 and the problem is gone but different kind of problem persists. Now doubletapping diacrit characters produces two of them ¨¨ ~~ ´´ ``, while standard behaviour in Linux was to produce one after doubletap ¨ ~ ´ `
 ;; Now investigating entirely platform independent way to bind those dead keys so that it produces wanted result on first press. 2015-12-03
-;; in Windows 10 follow this guide when necessary to get experience close to Fedora http://bit.ly/1TLwVm1
+;;Iin Windows 10 follow this guide when necessary to get experience close to Fedora http://bit.ly/1TLwVm1
 
 ;; Reduce startup time
 (setq gc-cons-threshold 100000000)
@@ -13,7 +12,6 @@
 (desktop-save-mode 1)		  
 
 ;; MELPA Package Repository melpa.org
-;; 
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
@@ -60,28 +58,45 @@
 (add-hook 'text-mode-hook 'visual-line-mode)
 
 ;; Haskell
-(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-(add-hook 'haskell-mode-hook 'scandi-be-gone)
+(defun comfy-haskell ()
+  (scandi-be-gone)
+  (haskell-indentation-mode 1))
+(add-hook 'haskell-mode-hook 'comfy-haskell)
 
-;; Common Lisp, Emacs Lisp, Scheme
-(defun comfy-lisp () 
+;; Common Lisp
+(defun comfy-lisp ()
+  (scandi-be-gone)
   (local-set-key [f8] 'slime-close-all-parens-in-sexp)
-  (local-set-key [f5] 'slime-eval-buffer)
-  (scandi-be-gone))
+  (local-set-key [f5] 'slime-eval-buffer))
 (add-hook 'lisp-mode-hook 'comfy-lisp)
-(add-hook 'emacs-lisp-mode-hook 'comfy-lisp)
 (add-hook 'common-lisp-mode-hook 'comfy-lisp)
 (add-hook 'slime-mode-hook 'comfy-lisp)
 (add-hook 'slime-repl-mode-hook 'comfy-lisp)
-(add-hook 'scheme-mode-hook 'comfy-lisp)
 (setq inferior-lisp-program "C:/SBCL/sbcl.exe")
-;;(setq inferior-lisp-program "C:/ECL/ecl.exe")
 (setq slime-contribs '(slime-fancy))
+
+;; Emacs Lisp
+(defun comfy-emli ()
+  (scandi-be-gone)
+  (local-set-key [f5] 'eval-buffer))
+(add-hook 'emacs-lisp-mode-hook 'comfy-emli)
+
+;; Scheme
+(defun comfy-scheme ()
+  (scandi-be-gone))
+(add-hook 'scheme-mode-hook 'comfy-scheme)
+
+;; Clojure
+(defun comfy-clojure ()
+  (scandi-be-gone))
+(add-hook 'clojure-mode-hook 'comfy-clojure)
+(add-hook 'cide-mode-hook 'comfy-clojure)
+(add-hook 'cider-repl-mode-hook 'comfy-clojure)
 
 ;; C, C++, Java
 (defun comfy-cee ()
-  (capitalized-words-mode 1)
-  (scandi-be-gone))
+  (scandi-be-gone)
+  (capitalized-words-mode 1))
 (add-hook 'c-mode-hook 'comfy-cee)
 (add-hook 'c++-mode-hook 'comfy-cee)
 (add-hook 'java-mode-hook 'comfy-cee)
@@ -110,7 +125,7 @@
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(package-selected-packages
    (quote
-    (geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
+    (cider geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
  '(ring-bell-function (quote ignore)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
