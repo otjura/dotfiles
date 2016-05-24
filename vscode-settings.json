@@ -1,0 +1,21 @@
+// Visual Studio Code v1.1.1 user settings
+// Place your settings in this file to overwrite the default settings
+// C:\Users\<username>\AppData\Roaming\Code\User\settings.json
+{
+    "files.eol": "\n",
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "externalTerminal.windowsExec": "powershell",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.DS_Store": true,
+        "**/.directory": true,
+        "**/.class": true,
+        "**/.fasl": true
+    }
+}
+
+
+ 
+ 
