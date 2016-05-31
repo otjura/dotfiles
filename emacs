@@ -21,6 +21,7 @@
 (package-initialize)
 
 ;; General Usability Tweaks
+(setq-default buffer-file-coding-system 'utf-8-unix)
 (setq-default fill-column 80)
 (fset 'yes-or-no-p 'y-or-n-p)
 (column-number-mode 1)
