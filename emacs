@@ -3,15 +3,9 @@
 ;; I'm not sure what exactly happened or was it even some version fuckup, but all dead keys suddenly produced messages such as "<dead-acute> is undefined".  2015-11-27
 ;; Running Emacs in Windows 10 and the problem is gone but different kind of problem persists. Now doubletapping diacrit characters produces two of them ¨¨ ~~ ´´ ``, while standard behaviour in Linux was to produce one after doubletap ¨ ~ ´ `
 ;; Now investigating entirely platform independent way to bind those dead keys so that it produces wanted result on first press. 2015-12-03
-;;Iin Windows 10 follow this guide when necessary to get experience close to Fedora http://bit.ly/1TLwVm1
+;; In Windows 10 follow this guide when necessary to get experience close to Fedora http://bit.ly/1TLwVm1
 
-;; Reduce startup time
-(setq gc-cons-threshold 100000000)
-
-;; Save sessions
-(desktop-save-mode 1)		  
-
-;; MELPA Package Repository melpa.org
+;; Enable MELPA Package Repository melpa.org
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
@@ -21,10 +15,14 @@
 (package-initialize)
 
 ;; General Usability Tweaks
+(setq gc-cons-threshold 10000000)
+(desktop-save-mode 1)
 (setq-default buffer-file-coding-system 'utf-8-unix)
 (setq-default fill-column 80)
 (fset 'yes-or-no-p 'y-or-n-p)
 (column-number-mode 1)
+(line-number-mode 1)
+(size-indication-mode 1)
 (tool-bar-mode -1)
 (setq blink-cursor-blinks 0)
 (blink-cursor-mode 1)
@@ -33,6 +31,10 @@
 (show-paren-mode 1)
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+(setq tab-always-indent 'complete)
+(setq scroll-preserve-screen-position 1)
+(global-aggressive-indent-mode 1)
+(add-to-list 'aggressive-indent-excluded-modes 'python-mode)
 
 ;; Global Custom Keybinds
 (global-set-key [f2] 'kmacro-call-macro);F2=run F3=record F4=end
