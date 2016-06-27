@@ -1,9 +1,11 @@
-;;;; Happy Emacs 24.5 for Windows 10 ;;;;
+;;;; Happy GNU Emacs 25 
 ;; Things that suddenly ceased working in 24.5. To be more precise, *all* dead keys which worked before as usual ceased to work in 24.5.
 ;; I'm not sure what exactly happened or was it even some version fuckup, but all dead keys suddenly produced messages such as "<dead-acute> is undefined".  2015-11-27
 ;; Running Emacs in Windows 10 and the problem is gone but different kind of problem persists. Now doubletapping diacrit characters produces two of them ¨¨ ~~ ´´ ``, while standard behaviour in Linux was to produce one after doubletap ¨ ~ ´ `
 ;; Now investigating entirely platform independent way to bind those dead keys so that it produces wanted result on first press. 2015-12-03
 ;; In Windows 10 follow this guide when necessary to get experience close to Fedora http://bit.ly/1TLwVm1
+;; C-h m to list all modes in current buffer!
+;; 25 upgrade killed aggressive indent plugin :(
 
 ;; Enable MELPA Package Repository melpa.org
 (require 'package)
@@ -33,8 +35,6 @@
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq tab-always-indent 'complete)
 (setq scroll-preserve-screen-position 1)
-(global-aggressive-indent-mode 1)
-(add-to-list 'aggressive-indent-excluded-modes 'python-mode)
 
 ;; Global Custom Keybinds
 (global-set-key [f2] 'kmacro-call-macro);F2=run F3=record F4=end
