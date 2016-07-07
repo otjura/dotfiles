@@ -52,7 +52,9 @@
   (local-set-key (kbd "§") (kbd "`"))
   (local-set-key (kbd "å") (kbd "`"))
   (local-set-key (kbd "ö") (kbd "("))
-  (local-set-key (kbd "ä") (kbd ")")))
+  (local-set-key (kbd "ä") (kbd ")"))
+  (local-set-key (kbd "Ö") (kbd "["))
+  (local-set-key (kbd "Ä") (kbd "]")))
 
 ;; Text Mode
 (defun comfy-text ()
