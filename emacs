@@ -1,11 +1,6 @@
-;;;; Happy GNU Emacs 25 
-;; Things that suddenly ceased working in 24.5. To be more precise, *all* dead keys which worked before as usual ceased to work in 24.5.
-;; I'm not sure what exactly happened or was it even some version fuckup, but all dead keys suddenly produced messages such as "<dead-acute> is undefined".  2015-11-27
-;; Running Emacs in Windows 10 and the problem is gone but different kind of problem persists. Now doubletapping diacrit characters produces two of them ¨¨ ~~ ´´ ``, while standard behaviour in Linux was to produce one after doubletap ¨ ~ ´ `
-;; Now investigating entirely platform independent way to bind those dead keys so that it produces wanted result on first press. 2015-12-03
-;; In Windows 10 follow this guide when necessary to get experience close to Fedora http://bit.ly/1TLwVm1
-;; C-h m to list all modes in current buffer!
-;; 25 upgrade killed aggressive indent plugin :(
+;; Happy GNU Emacs 25 ;;
+;; for Windows http://emacsbinw64.sourceforge.net/ and this guide: https://archive.is/6LriZ
+;; self-docs: (describe-mode) (describe-key) (describe-function)
 
 ;; Enable MELPA Package Repository melpa.org
 (require 'package)
@@ -35,17 +30,20 @@
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq tab-always-indent 'complete)
 (setq scroll-preserve-screen-position 1)
+(require 'dired)
 
 ;; Global Custom Keybinds
-(global-set-key [f2] 'kmacro-call-macro);F2=run F3=record F4=end
-(global-set-key [f9] 'other-window)
-(global-set-key [f10] 'previous-buffer)
-(global-set-key [f11] 'next-buffer)
+(global-set-key [f2] 'kmacro-call-macro); F3=rec F4=endrec F2=run 
+(global-set-key [f9] 'other-window) ; C-x o
+(global-set-key [f10] 'previous-buffer) ; C-x C-left
+(global-set-key [f11] 'next-buffer) ; C-x C-right
 (global-set-key [f12] 'electric-buffer-list)
 (global-set-key (kbd "C-c q") 'query-replace)
 (global-set-key (kbd "C-c r") 'replace-string)
 (global-set-key (kbd "C-c g") 'goto-line)
 (global-set-key (kbd "C-<tab>") 'indent-region)
+(global-set-key [scroll] (format-time-string ";; %F %T"))
+(global-set-key (kbd "C-x r p") 'bookmark-delete)
 
 (defun scandi-be-gone ()
   (local-set-key (kbd "¨") (kbd "~"))
