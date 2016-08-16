@@ -30,10 +30,10 @@
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq tab-always-indent 'complete)
 (setq scroll-preserve-screen-position 1)
-(require 'dired)
-
+(setq indent-tabs-mode nil)
+ 
 ;; Global Custom Keybinds
-(global-set-key [f2] 'kmacro-call-macro); F3=rec F4=endrec F2=run 
+(global-set-key [f2] 'kmacro-call-macro); F3=rec F4=endrec F2=run
 (global-set-key [f9] 'other-window) ; C-x o
 (global-set-key [f10] 'previous-buffer) ; C-x C-left
 (global-set-key [f11] 'next-buffer) ; C-x C-right
@@ -46,7 +46,7 @@
 (global-set-key (kbd "C-x r p") 'bookmark-delete)
 
 (defun scandi-be-gone ()
-  (local-set-key (kbd "¨") (kbd "~"))
+  ( local-set-key (kbd "¨") (kbd "~"))
   (local-set-key (kbd "§") (kbd "`"))
   (local-set-key (kbd "å") (kbd "`"))
   (local-set-key (kbd "ö") (kbd "("))
@@ -102,7 +102,7 @@
   (capitalized-words-mode 1))
 (add-hook 'c-mode-hook 'comfy-cee)
 (add-hook 'c++-mode-hook 'comfy-cee)
-(add-hook 'java-mode-hook 'comfy-cee) 
+(add-hook 'java-mode-hook 'comfy-cee)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
