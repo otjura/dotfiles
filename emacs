@@ -46,7 +46,7 @@
 (global-set-key (kbd "C-x r p") 'bookmark-delete)
 
 (defun scandi-be-gone ()
-  ( local-set-key (kbd "¨") (kbd "~"))
+  (local-set-key (kbd "¨") (kbd "~"))
   (local-set-key (kbd "§") (kbd "`"))
   (local-set-key (kbd "å") (kbd "`"))
   (local-set-key (kbd "ö") (kbd "("))
@@ -61,10 +61,10 @@
 (add-hook 'text-mode-hook 'visual-line-mode)
 
 ;; Haskell
-(defun comfy-haskell ()
-  (scandi-be-gone)
-  (haskell-indentation-mode 1))
-(add-hook 'haskell-mode-hook 'comfy-haskell)
+;(defun comfy-haskell ()                 
+;  (scandi-be-gone)
+;  (haskell-indentation-mode 1))
+;(add-hook 'haskell-mode-hook 'comfy-haskell)
 
 ;; Common Lisp
 (defun comfy-lisp ()
@@ -99,7 +99,7 @@
 ;; C, C++, Java
 (defun comfy-cee ()
   (scandi-be-gone)
-  (capitalized-words-mode 1))
+  (subword-mode 1))
 (add-hook 'c-mode-hook 'comfy-cee)
 (add-hook 'c++-mode-hook 'comfy-cee)
 (add-hook 'java-mode-hook 'comfy-cee)
