@@ -31,6 +31,7 @@
 (setq tab-always-indent 'complete)
 (setq scroll-preserve-screen-position 1)
 (setq indent-tabs-mode nil)
+(setq read-file-name-completion-ignore-case t)
  
 ;; Global Custom Keybinds
 (global-set-key [f2] 'kmacro-call-macro); F3=rec F4=endrec F2=run
@@ -43,6 +44,7 @@
 (global-set-key (kbd "C-c g") 'goto-line)
 (global-set-key (kbd "C-<tab>") 'indent-region)
 (global-set-key [scroll] (format-time-string ";; %F %T"))
+(global-set-key [Scroll_Lock] (format-time-string ";; %F %T"))
 (global-set-key (kbd "C-x r p") 'bookmark-delete)
 
 (defun scandi-be-gone ()
@@ -75,9 +77,10 @@
 (add-hook 'common-lisp-mode-hook 'comfy-lisp)
 (add-hook 'slime-mode-hook 'comfy-lisp)
 (add-hook 'slime-repl-mode-hook 'comfy-lisp)
-(setq inferior-lisp-program "C:/SBCL/sbcl.exe")
+(setq inferior-lisp-program "/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
-
+(setq common-lisp-hyperspec-root (expand-file-name "~/.emacs.d/HyperSpec/"))
+                                  
 ;; Emacs Lisp
 (defun comfy-emli ()
   (scandi-be-gone)
@@ -128,7 +131,7 @@
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(package-selected-packages
    (quote
-    (cider geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
+    (aggressive-indent cider geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
  '(ring-bell-function (quote ignore)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
