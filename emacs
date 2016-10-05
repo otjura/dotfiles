@@ -13,19 +13,20 @@
 
 ;; General Usability Tweaks
 (setq gc-cons-threshold 10000000)
-(desktop-save-mode 1)
 (setq-default buffer-file-coding-system 'utf-8-unix)
 (setq-default fill-column 80)
+(desktop-save-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (column-number-mode 1)
 (line-number-mode 1)
 (size-indication-mode 1)
 (tool-bar-mode -1)
-(setq blink-cursor-blinks 0)
 (blink-cursor-mode 1)
+(show-paren-mode 1)
+(size-indication-mode -1)
+(setq blink-cursor-blinks 0)
 (setq show-paren-delay 0)
 (setq show-paren-style 'parenthesis)
-(show-paren-mode 1)
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 (setq tab-always-indent 'complete)
@@ -46,6 +47,7 @@
 (global-set-key [scroll] (format-time-string ";; %F %T"))
 (global-set-key [Scroll_Lock] (format-time-string ";; %F %T"))
 (global-set-key (kbd "C-x r p") 'bookmark-delete)
+(global-set-key (kbd "C-c k") 'kill-this-buffer)
 
 (defun scandi-be-gone ()
   (local-set-key (kbd "¨") (kbd "~"))
@@ -99,15 +101,19 @@
 (add-hook 'cider-mode-hook 'comfy-clojure)
 (add-hook 'cider-repl-mode-hook 'comfy-clojure)
 
-;; C, C++, Java
+;; C, C++, Java, Python, Ruby
 (defun comfy-cee ()
   (scandi-be-gone)
   (subword-mode 1))
 (add-hook 'c-mode-hook 'comfy-cee)
 (add-hook 'c++-mode-hook 'comfy-cee)
 (add-hook 'java-mode-hook 'comfy-cee)
+(add-hook 'python-mode-hook 'comfy-cee)
+(add-hook 'ruby-mode-hook 'comfy-cee)
 
-
+;; Matlab, Octave
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
+     
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; GENERATED SETTINGS BEGIN HERE
 ;;
