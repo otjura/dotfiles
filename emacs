@@ -44,10 +44,14 @@
 (global-set-key (kbd "C-c r") 'replace-string)
 (global-set-key (kbd "C-c g") 'goto-line)
 (global-set-key (kbd "C-<tab>") 'indent-region)
-(global-set-key [scroll] (format-time-string ";; %F %T"))
-(global-set-key [Scroll_Lock] (format-time-string ";; %F %T"))
+;(global-set-key (kbd "scroll") '(format-time-string ";; %F %T"));windows
+;(global-set-key (kbd "Scroll_Lock") '(format-time-string ";; %F %T"));linux
 (global-set-key (kbd "C-x r p") 'bookmark-delete)
 (global-set-key (kbd "C-c k") 'kill-this-buffer)
+
+;(defun fts () (let ((td (format-time-string ";; %F %T"))) td));TODO
+;; stores value of format-time-string to [Scroll_Lock] so it doesn't update
+;; need to figure how to stop that from happening
 
 (defun scandi-be-gone ()
   (local-set-key (kbd "¨") (kbd "~"))
@@ -56,7 +60,9 @@
   (local-set-key (kbd "ö") (kbd "("))
   (local-set-key (kbd "ä") (kbd ")"))
   (local-set-key (kbd "Ö") (kbd "["))
-  (local-set-key (kbd "Ä") (kbd "]")))
+  (local-set-key (kbd "Ä") (kbd "]"))
+  (local-set-key (kbd "ø") (kbd "}"))
+  (local-set-key (kbd "æ") (kbd "{")))
 
 ;; Text Mode
 (defun comfy-text ()
@@ -101,7 +107,7 @@
 (add-hook 'cider-mode-hook 'comfy-clojure)
 (add-hook 'cider-repl-mode-hook 'comfy-clojure)
 
-;; C, C++, Java, Python, Ruby
+;; C, C++, Java, Python, Ruby, JavaScript, TypeScript
 (defun comfy-cee ()
   (scandi-be-gone)
   (subword-mode 1))
@@ -110,6 +116,8 @@
 (add-hook 'java-mode-hook 'comfy-cee)
 (add-hook 'python-mode-hook 'comfy-cee)
 (add-hook 'ruby-mode-hook 'comfy-cee)
+(add-hook 'js-mode-hook 'comfy-cee)
+(add-hook 'typescript-mode-hook 'comfy-cee)
 
 ;; Matlab, Octave
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
