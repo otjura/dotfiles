@@ -1,11 +1,18 @@
-// Visual Studio Code v1.1.1 user settings
-// Place your settings in this file to overwrite the default settings
-// C:\Users\<username>\AppData\Roaming\Code\User\settings.json
 {
-    "files.eol": "\n",
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "externalTerminal.windowsExec": "powershell",
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "boundary",
+    "editor.insertSpaces": true,
+    "editor.minimap.enabled": true,
+    "editor.minimap.maxColumn": 120,
+    "editor.cursorBlinking": "phase",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.encoding": "utf8",
+    "files.eol": "\n",
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -16,6 +23,3 @@
     }
 }
 
-
- 
- 
