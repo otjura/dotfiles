@@ -1,22 +1,14 @@
-# .bashrc
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
 # Prompt theme
-PS1='\[\e[1;35m\][\u@\h \W]\$\[\e[0m\] '
+PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
 
-# User specific aliases and functions
-alias emacs='emacs --no-desktop --no-splash --no-window-system'
+# Settings and paths
+export MAN_POSIXLY_CORRECT=1
+export EDITOR=/usr/bin/vim
+
+# Aliases and functions
+alias emacs='emacs --no-splash --no-desktop --no-window-system'
 alias la='ls -a'
-alias l='ls'
+alias ll='ls -l'
 alias cdexthdd='cd /run/media/$USER/*'
-alias cdmygithub=' cd ~/code/github/otjura/'
+alias cdmygithub='cd ~/code/github/otjura/'
 
-# added by Anaconda3 4.2.0 installer
-export PATH="/home/ojr/bin/anaconda3/bin:$PATH"

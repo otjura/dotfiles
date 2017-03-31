@@ -20,17 +20,14 @@
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
 
-    "files.exclude": {
-      "**/.git": true,
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/.DS_Store": true,
-      "**/.directory": true,
-      "**/.class": true,
-      "**/.fasl": true
-    }
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/.directory": true,
+    "**/.class": true,
+    "**/.fasl": true
+  }
 }
 
-
- 
- 
