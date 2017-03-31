@@ -1,18 +1,33 @@
-// Visual Studio Code v1.1.1 user settings
-// Place your settings in this file to overwrite the default settings
-// C:\Users\<username>\AppData\Roaming\Code\User\settings.json
 {
-    "files.eol": "\n",
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "externalTerminal.windowsExec": "powershell",
+  "editor.fontSize": 14,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "off",
+  "editor.minimap.enabled": false,
+  "editor.minimap.renderCharacters": false,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorStyle": "line",
+  "editor.renderWhitespace": "boundary",
+
+  "workbench.editor.tabCloseButton": "right",
+
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+
+  "explorer.openEditors.visible": 0,
+  "explorer.openEditors.dynamicHeight": false,
+
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+
     "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.DS_Store": true,
-        "**/.directory": true,
-        "**/.class": true,
-        "**/.fasl": true
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/.DS_Store": true,
+      "**/.directory": true,
+      "**/.class": true,
+      "**/.fasl": true
     }
 }
 
