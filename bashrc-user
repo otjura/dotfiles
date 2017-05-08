@@ -1,14 +1,24 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
 # Prompt theme
-PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
+PS1='\[\e[1;35m\][\u@\h \W]\$\[\e[0m\] '
 
-# Settings and paths
-export MAN_POSIXLY_CORRECT=1
-export EDITOR=/usr/bin/vim
-
-# Aliases and functions
-alias emacs='emacs --no-splash --no-desktop --no-window-system'
+# User specific aliases and functions
+alias emacs='emacs --no-desktop --no-splash --no-window-system'
 alias la='ls -a'
 alias ll='ls -l'
 alias cdexthdd='cd /run/media/$USER/*'
 alias cdmygithub='cd ~/code/github/otjura/'
+alias musictube-dl='youtube-dl --ignore-config --ignore-errors --no-cache-dir --extract-audio --audio-format "mp3" --audio-quality 5 --embed-thumbnail --metadata-from-title "%(artist)s - %(title)s" --output "%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
+alias rcl='rlwrap sbcl'
+alias cls='sbcl --script'
+
+export PATH="/home/ojr/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH=~/.npm-global/bin:$PATH
 
