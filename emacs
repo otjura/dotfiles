@@ -12,9 +12,9 @@
 (package-initialize)
 
 ;; General Usability Tweaks
-(setq gc-cons-threshold 10000000)
+;(setq gc-cons-threshold 10000000)
 (setq-default buffer-file-coding-system 'utf-8-unix)
-(setq-default fill-column 80)
+(setq-default fill-column 100)
 (desktop-save-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (column-number-mode 1)
@@ -33,6 +33,7 @@
 (setq scroll-preserve-screen-position 1)
 (setq indent-tabs-mode nil)
 (setq read-file-name-completion-ignore-case t)
+(setq tab-width 2)
  
 ;; Global Custom Keybinds
 (global-set-key [f2] 'kmacro-call-macro); F3=rec F4=endrec F2=run
@@ -44,14 +45,9 @@
 (global-set-key (kbd "C-c r") 'replace-string)
 (global-set-key (kbd "C-c g") 'goto-line)
 (global-set-key (kbd "C-<tab>") 'indent-region)
-;(global-set-key (kbd "scroll") '(format-time-string ";; %F %T"));windows
-;(global-set-key (kbd "Scroll_Lock") '(format-time-string ";; %F %T"));linux
 (global-set-key (kbd "C-x r p") 'bookmark-delete)
 (global-set-key (kbd "C-c k") 'kill-this-buffer)
-
-;(defun fts () (let ((td (format-time-string ";; %F %T"))) td));TODO
-;; stores value of format-time-string to [Scroll_Lock] so it doesn't update
-;; need to figure how to stop that from happening
+(global-set-key (kbd "C-c s") 'search-forward)
 
 (defun scandi-be-gone ()
   (local-set-key (kbd "¨") (kbd "~"))
@@ -61,20 +57,14 @@
   (local-set-key (kbd "ä") (kbd ")"))
   (local-set-key (kbd "Ö") (kbd "["))
   (local-set-key (kbd "Ä") (kbd "]"))
-  (local-set-key (kbd "ø") (kbd "}"))
-  (local-set-key (kbd "æ") (kbd "{")))
+  (local-set-key (kbd "ø") (kbd "{"))
+  (local-set-key (kbd "æ") (kbd "}")))
 
 ;; Text Mode
 (defun comfy-text ()
   (local-set-key (kbd "C-c <deletechar>") 'kill-paragraph))
 (add-hook 'text-mode-hook 'comfy-text)
 (add-hook 'text-mode-hook 'visual-line-mode)
-
-;; Haskell
-;(defun comfy-haskell ()                 
-;  (scandi-be-gone)
-;  (haskell-indentation-mode 1))
-;(add-hook 'haskell-mode-hook 'comfy-haskell)
 
 ;; Common Lisp
 (defun comfy-lisp ()
@@ -87,7 +77,7 @@
 (add-hook 'slime-repl-mode-hook 'comfy-lisp)
 (setq inferior-lisp-program "/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
-(setq common-lisp-hyperspec-root (expand-file-name "~/.emacs.d/HyperSpec/"))
+(setq common-lisp-hyperspec-root (expand-file-name "~/.slime/HyperSpec/"))
                                   
 ;; Emacs Lisp
 (defun comfy-emli ()
@@ -118,7 +108,8 @@
 (add-hook 'ruby-mode-hook 'comfy-cee)
 (add-hook 'js-mode-hook 'comfy-cee)
 (add-hook 'typescript-mode-hook 'comfy-cee)
-
+(setq python-indent-offset 4)
+ 
 ;; Matlab, Octave
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
      
@@ -136,16 +127,14 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(cursor-type (quote bar))
  '(custom-enabled-themes (quote (wombat)))
- '(custom-safe-themes
-   (quote
-    ("88cac3cdd1edc9e90074d8119cc9b14764b5e7e9944d92a582406c9e67bdacdc" "b9e72874e3180f42d4ecdee8b5ecbf67fe5e922747ca50c8b9ca5960988c6277" default)))
  '(fci-rule-color "#383838")
+ '(frame-resize-pixelwise t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(package-selected-packages
    (quote
-    (aggressive-indent cider geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
+    (markdown-mode typescript-mode paredit aggressive-indent cider geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
  '(ring-bell-function (quote ignore)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -156,3 +145,4 @@
  '(show-paren-match ((t (:underline "lime green"))))
  '(show-paren-mismatch ((t (:underline "firebrick1")))))
 (setq load-home-init-file t) ; don't load init file from ~/.xemacs/init.el
+(put 'downcase-region 'disabled nil)

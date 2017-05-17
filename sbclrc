@@ -1,0 +1,2 @@
+;;; Muffle aka silence SBCL compiler notes and all CL warnings in REPL. 
+(declaim (sb-ext:muffle-conditions sb-ext:compiler-note cl:warning sb-int:constant-modified sb-int:duplicate-definition cl:simple-warning cl:style-warning))
