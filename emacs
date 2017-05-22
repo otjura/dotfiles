@@ -4,18 +4,12 @@
 
 ;; Enable MELPA Package Repository melpa.org
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-(when (< emacs-major-version)
-  (add-to-list 'package-archives
-	       '("gnu" . "http://elpa.gnu.org/packages/")))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 
 ;; General Usability Tweaks
-;(setq gc-cons-threshold 10000000)
 (setq-default buffer-file-coding-system 'utf-8-unix)
 (setq-default fill-column 100)
-(desktop-save-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (column-number-mode 1)
 (line-number-mode 1)
@@ -29,11 +23,8 @@
 (setq show-paren-style 'parenthesis)
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-(setq tab-always-indent 'complete)
 (setq scroll-preserve-screen-position 1)
-(setq indent-tabs-mode nil)
 (setq read-file-name-completion-ignore-case t)
-(setq tab-width 2)
  
 ;; Global Custom Keybinds
 (global-set-key [f2] 'kmacro-call-macro); F3=rec F4=endrec F2=run
@@ -41,6 +32,7 @@
 (global-set-key [f10] 'previous-buffer) ; C-x C-left
 (global-set-key [f11] 'next-buffer) ; C-x C-right
 (global-set-key [f12] 'electric-buffer-list)
+(global-set-key [f1] 'menu-bar-open)
 (global-set-key (kbd "C-c q") 'query-replace)
 (global-set-key (kbd "C-c r") 'replace-string)
 (global-set-key (kbd "C-c g") 'goto-line)
@@ -122,9 +114,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
+	 [default default default italic underline success warning error])
  '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+	 ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(cursor-type (quote bar))
  '(custom-enabled-themes (quote (wombat)))
  '(fci-rule-color "#383838")
@@ -133,9 +125,11 @@
  '(initial-scratch-message nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
  '(package-selected-packages
-   (quote
-    (markdown-mode typescript-mode paredit aggressive-indent cider geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
- '(ring-bell-function (quote ignore)))
+	 (quote
+		(markdown-mode typescript-mode paredit aggressive-indent cider geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
+ '(ring-bell-function (quote ignore))
+ '(tab-always-indent (quote complete))
+ '(tab-width 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
