@@ -1,4 +1,5 @@
-# usual bash lookalike prompt for powershell
+# bash lookalike prompt for powershell
+
 function prompt {
 	# current directory
 	$c = (Get-Location)
@@ -12,8 +13,8 @@ function prompt {
 	# get only current folder
 	#$p = Split-Path (Get-Location) -Leaf
 
-	#print prompt
-	"[$h`:$($c -replace $r, '~$1')$('>' * ($NestedPromptLevel + 1))] "
+	#print prompt 
+	"$h`:$($c -replace $r, '~$1')`r`n$('>' * ($NestedPromptLevel + 1)) "
 }
 
 
