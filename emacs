@@ -1,11 +1,11 @@
-;; Happy GNU Emacs 27 ;;
-;; self-docs: (describe-mode) (describe-key) (describe-function)
+;; Happy GNU Emacs 27
+;; Self-documentation access: describe-symbol describe-variable describe-function
 
 ;; Enable MELPA Package Repository
 (require 'package)
 (add-to-list 'package-archives
-						 '("melpa-stable" . "http://stable.melpa.org/packages/")
-						 t)
+             '("melpa-stable" . "http://stable.melpa.org/packages/")
+             t)
 (package-initialize)
 
 ;; General Usability Tweaks
@@ -24,7 +24,7 @@
 (setq show-paren-style 'parenthesis)
 (setq scroll-preserve-screen-position 1)
 (setq read-file-name-completion-ignore-case t)
-(setq default-directory "C:/Users/Otso/")
+(if (eq system-type 'windows-nt) (setq default-directory "C:/Users/Otso/"))
 
 ;; Global Custom Keybinds
 (global-set-key [f1] 'menu-bar-open)
@@ -42,23 +42,23 @@
 (global-set-key (kbd "C-c s") 'search-forward)
 
 (defun scandi-be-gone ()
-	(local-set-key (kbd "å") (kbd "`"))
-	(local-set-key (kbd "ö") (kbd "("))
-	(local-set-key (kbd "ä") (kbd ")"))
-	(local-set-key (kbd "Ö") (kbd "["))
-	(local-set-key (kbd "Ä") (kbd "]")))
+  (local-set-key (kbd "Ã¥") (kbd "`"))
+  (local-set-key (kbd "Ã¶") (kbd "("))
+  (local-set-key (kbd "Ã¤") (kbd ")"))
+  (local-set-key (kbd "Ã–") (kbd "["))
+  (local-set-key (kbd "Ã„") (kbd "]")))
 
 ;; Text Mode
 (defun comfy-text ()
-	(local-set-key (kbd "C-c <deletechar>") 'kill-paragraph))
+  (local-set-key (kbd "C-c <deletechar>") 'kill-paragraph))
 (add-hook 'text-mode-hook 'comfy-text)
 (add-hook 'text-mode-hook 'visual-line-mode)
 
 ;; Common Lisp
 (defun comfy-lisp ()
-	(scandi-be-gone)
-	(local-set-key [f8] 'slime-close-all-parens-in-sexp)
-	(local-set-key [f5] 'slime-eval-buffer))
+  (scandi-be-gone)
+  (local-set-key [f8] 'slime-close-all-parens-in-sexp)
+  (local-set-key [f5] 'slime-eval-buffer))
 (add-hook 'lisp-mode-hook 'comfy-lisp)
 (add-hook 'common-lisp-mode-hook 'comfy-lisp)
 (add-hook 'slime-mode-hook 'comfy-lisp)
@@ -69,26 +69,26 @@
 
 ;; Emacs Lisp
 (defun comfy-emli ()
-	(scandi-be-gone)
-	(local-set-key [f5] 'eval-buffer))
+  (scandi-be-gone)
+  (local-set-key [f5] 'eval-buffer))
 (add-hook 'emacs-lisp-mode-hook 'comfy-emli)
 
 ;; Scheme
 (defun comfy-scheme ()
-	(scandi-be-gone))
+  (scandi-be-gone))
 (add-hook 'scheme-mode-hook 'comfy-scheme)
 
 ;; Clojure
 (defun comfy-clojure ()
-	(scandi-be-gone))
+  (scandi-be-gone))
 (add-hook 'clojure-mode-hook 'comfy-clojure)
 (add-hook 'cider-mode-hook 'comfy-clojure)
 (add-hook 'cider-repl-mode-hook 'comfy-clojure)
 
 ;; Java
 (defun comfy-java ()
-	(scandi-be-gone)
-	(subword-mode 1))
+  (scandi-be-gone)
+  (subword-mode 1))
 (add-hook 'java-mode-hook 'comfy-java)
 
 
@@ -101,21 +101,24 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
-	 [default default default italic underline success warning error])
+   [default default default italic underline success warning error])
  '(ansi-color-names-vector
-	 ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(cursor-type (quote bar))
- '(custom-enabled-themes (quote (wombat)))
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(current-language-environment "UTF-8")
+ '(cursor-type 'bar)
+ '(custom-enabled-themes '(wombat))
+ '(default-input-method "utf-8")
  '(fci-rule-color "#383838")
  '(frame-resize-pixelwise t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
- '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
+ '(keyboard-coding-system 'utf-8)
+ '(mouse-wheel-scroll-amount '(3 ((shift) . 1) ((control))))
  '(package-selected-packages
-	 (quote
-		(markdown-mode typescript-mode paredit aggressive-indent cider geiser jedi haskell-mode github-clone gitconfig-mode github-browse-file git auto-complete clojure-mode cyberpunk-theme slime)))
- '(ring-bell-function (quote ignore))
- '(tab-always-indent (quote complete))
+	 '(markdown-mode typescript-mode clojure-mode cider slime git auto-complete aggressive-indent))
+ '(ring-bell-function 'ignore)
+ '(selection-coding-system 'utf-8)
+ '(tab-always-indent 'complete)
  '(tab-width 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
