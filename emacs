@@ -16,6 +16,7 @@
 (line-number-mode 1)
 (size-indication-mode 1)
 (tool-bar-mode -1)
+(tab-bar-mode 1)
 (blink-cursor-mode 1)
 (show-paren-mode 1)
 (size-indication-mode -1)
@@ -24,7 +25,9 @@
 (setq show-paren-style 'parenthesis)
 (setq scroll-preserve-screen-position 1)
 (setq read-file-name-completion-ignore-case t)
-(if (eq system-type 'windows-nt) (setq default-directory "C:/Users/Otso/"))
+(if (eq system-type 'windows-nt)
+		(progn ((setq default-directory "C:/Users/Otso/")
+						(set-face-font 'default "Consolas-11"))
 
 ;; Global Custom Keybinds
 (global-set-key [f1] 'menu-bar-open)
